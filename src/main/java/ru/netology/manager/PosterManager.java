@@ -9,7 +9,11 @@ import ru.netology.domain.FilmItem;
 @Data
 public class PosterManager {
     private FilmItem[] items = new FilmItem[0];
-    private int amountItem=10;
+    private int amountItem = 10;
+
+    public PosterManager(int amountItem) {
+        this.amountItem = amountItem;
+    }
 
     public void add(FilmItem item) {
         // создаём новый массив размером на единицу больше

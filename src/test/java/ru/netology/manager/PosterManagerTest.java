@@ -8,6 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class PosterManagerTest {
     PosterManager manager = new PosterManager();
+    PosterManager managerAmountNormItem = new PosterManager(5);
+    PosterManager managerAmountOneItem = new PosterManager(1);
+    PosterManager managerAmountEmptyItem = new PosterManager(0);
+    PosterManager managerAmountUpperItem = new PosterManager(11);
     FilmItem first = new FilmItem(1, 1, "Бладшот", "боевик", ".jpg");
     FilmItem second = new FilmItem(2, 2, "Вперёд", "мультфильм", ".jpg");
     FilmItem third = new FilmItem(3, 3, "Отель Белград", "комедия", ".jpg");
@@ -33,6 +37,62 @@ public class PosterManagerTest {
         manager.add(tenth);
     }
 
+    @BeforeEach
+    public void setUpWithAmount() {
+        managerAmountNormItem.add(first);
+        managerAmountNormItem.add(second);
+        managerAmountNormItem.add(third);
+        managerAmountNormItem.add(forth);
+        managerAmountNormItem.add(fifth);
+        managerAmountNormItem.add(sixth);
+        managerAmountNormItem.add(seventh);
+        managerAmountNormItem.add(eighth);
+        managerAmountNormItem.add(ninth);
+        managerAmountNormItem.add(tenth);
+    }
+
+    @BeforeEach
+    public void setUpWithAmountOne() {
+        managerAmountOneItem.add(first);
+        managerAmountOneItem.add(second);
+        managerAmountOneItem.add(third);
+        managerAmountOneItem.add(forth);
+        managerAmountOneItem.add(fifth);
+        managerAmountOneItem.add(sixth);
+        managerAmountOneItem.add(seventh);
+        managerAmountOneItem.add(eighth);
+        managerAmountOneItem.add(ninth);
+        managerAmountOneItem.add(tenth);
+    }
+
+    @BeforeEach
+    public void setUpWithAmountEmpty() {
+        managerAmountEmptyItem.add(first);
+        managerAmountEmptyItem.add(second);
+        managerAmountEmptyItem.add(third);
+        managerAmountEmptyItem.add(forth);
+        managerAmountEmptyItem.add(fifth);
+        managerAmountEmptyItem.add(sixth);
+        managerAmountEmptyItem.add(seventh);
+        managerAmountEmptyItem.add(eighth);
+        managerAmountEmptyItem.add(ninth);
+        managerAmountEmptyItem.add(tenth);
+    }
+
+    @BeforeEach
+    public void setUpWithAmountUpper() {
+        managerAmountUpperItem.add(first);
+        managerAmountUpperItem.add(second);
+        managerAmountUpperItem.add(third);
+        managerAmountUpperItem.add(forth);
+        managerAmountUpperItem.add(fifth);
+        managerAmountUpperItem.add(sixth);
+        managerAmountUpperItem.add(seventh);
+        managerAmountUpperItem.add(eighth);
+        managerAmountUpperItem.add(ninth);
+        managerAmountUpperItem.add(tenth);
+    }
+
     @Test
     public void shouldShowAllFilms() {
         FilmItem[] actual = manager.getAll();
@@ -41,33 +101,29 @@ public class PosterManagerTest {
     }
 
     @Test
-    public void shouldShowFiveLastFilms(){
-        manager.setAmountItem(5);
-        FilmItem[] actual = manager.getAll();
+    public void shouldShowFiveLastFilms() {
+        FilmItem[] actual = managerAmountNormItem.getAll();
         FilmItem[] expected = new FilmItem[]{tenth, ninth, eighth, seventh, sixth};
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldShowOneLastFilms(){
-        manager.setAmountItem(1);
-        FilmItem[] actual = manager.getAll();
+    public void shouldShowOneLastFilms() {
+        FilmItem[] actual = managerAmountOneItem.getAll();
         FilmItem[] expected = new FilmItem[]{tenth};
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldShowEmptyFilms(){
-        manager.setAmountItem(0);
-        FilmItem[] actual = manager.getAll();
+    public void shouldShowEmptyFilms() {
+        FilmItem[] actual = managerAmountEmptyItem.getAll();
         FilmItem[] expected = new FilmItem[]{};
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldShowUpperFilms(){
-        manager.setAmountItem(11);
-        FilmItem[] actual = manager.getAll();
+    public void shouldShowUpperFilms() {
+        FilmItem[] actual = managerAmountUpperItem.getAll();
         FilmItem[] expected = new FilmItem[]{tenth, ninth, eighth, seventh, sixth, fifth, forth, third, second, first};
         assertArrayEquals(expected, actual);
     }
