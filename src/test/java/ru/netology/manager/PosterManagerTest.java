@@ -11,7 +11,7 @@ public class PosterManagerTest {
     PosterManager managerAmountNormItem = new PosterManager(5);
     PosterManager managerAmountOneItem = new PosterManager(1);
     PosterManager managerAmountEmptyItem = new PosterManager(0);
-    PosterManager managerAmountUpperItem = new PosterManager(11);
+
     FilmItem first = new FilmItem(1, 1, "Бладшот", "боевик", ".jpg");
     FilmItem second = new FilmItem(2, 2, "Вперёд", "мультфильм", ".jpg");
     FilmItem third = new FilmItem(3, 3, "Отель Белград", "комедия", ".jpg");
@@ -79,20 +79,6 @@ public class PosterManagerTest {
         managerAmountEmptyItem.add(tenth);
     }
 
-    @BeforeEach
-    public void setUpWithAmountUpper() {
-        managerAmountUpperItem.add(first);
-        managerAmountUpperItem.add(second);
-        managerAmountUpperItem.add(third);
-        managerAmountUpperItem.add(forth);
-        managerAmountUpperItem.add(fifth);
-        managerAmountUpperItem.add(sixth);
-        managerAmountUpperItem.add(seventh);
-        managerAmountUpperItem.add(eighth);
-        managerAmountUpperItem.add(ninth);
-        managerAmountUpperItem.add(tenth);
-    }
-
     @Test
     public void shouldShowAllFilms() {
         FilmItem[] actual = manager.getAll();
@@ -118,13 +104,6 @@ public class PosterManagerTest {
     public void shouldShowEmptyFilms() {
         FilmItem[] actual = managerAmountEmptyItem.getAll();
         FilmItem[] expected = new FilmItem[]{};
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldShowUpperFilms() {
-        FilmItem[] actual = managerAmountUpperItem.getAll();
-        FilmItem[] expected = new FilmItem[]{tenth, ninth, eighth, seventh, sixth, fifth, forth, third, second, first};
         assertArrayEquals(expected, actual);
     }
 
