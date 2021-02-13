@@ -27,10 +27,16 @@ public class PosterManager {
     }
 
     public FilmItem[] getAll() {
-        FilmItem[] result = new FilmItem[amountItem];
+        int lengthResult;
+        if (amountItem > items.length) {
+            lengthResult = items.length;
+        } else {
+            lengthResult = amountItem;
+        }
+        FilmItem[] result = new FilmItem[lengthResult];
         // перебираем массив в прямом порядке
         // но кладём в результаты в обратном
-        for (int i = 0; i < amountItem; i++) {
+        for (int i = 0; i < lengthResult; i++) {
             int index = items.length - i - 1;
             result[i] = items[index];
         }

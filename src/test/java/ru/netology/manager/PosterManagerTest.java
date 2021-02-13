@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class PosterManagerTest {
     PosterManager manager = new PosterManager();
+    PosterManager managerAmountOfItemLess = new PosterManager();
     PosterManager managerAmountNormItem = new PosterManager(5);
     PosterManager managerAmountOneItem = new PosterManager(1);
     PosterManager managerAmountEmptyItem = new PosterManager(0);
@@ -35,6 +36,15 @@ public class PosterManagerTest {
         manager.add(eighth);
         manager.add(ninth);
         manager.add(tenth);
+    }
+
+    @BeforeEach
+    public void setUpAmountItemLess() {
+        managerAmountOfItemLess.add(first);
+        managerAmountOfItemLess.add(second);
+        managerAmountOfItemLess.add(third);
+        managerAmountOfItemLess.add(forth);
+        managerAmountOfItemLess.add(fifth);
     }
 
     @BeforeEach
@@ -83,6 +93,13 @@ public class PosterManagerTest {
     public void shouldShowAllFilms() {
         FilmItem[] actual = manager.getAll();
         FilmItem[] expected = new FilmItem[]{tenth, ninth, eighth, seventh, sixth, fifth, forth, third, second, first};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldShowAmountItemLess() {
+        FilmItem[] actual = managerAmountOfItemLess.getAll();
+        FilmItem[] expected = new FilmItem[]{fifth, forth, third, second, first};
         assertArrayEquals(expected, actual);
     }
 
